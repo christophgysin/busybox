@@ -527,7 +527,10 @@ static const struct dhcp_client_t ext_dhcp_clients[] = {
 		"dhcpcd -k %iface%",
 	},
 	{ "dhclient",
-		"dhclient -pf /var/run/dhclient.%iface%.pid %iface%",
+		"dhclient"
+			" -pf /var/run/dhclient.%iface%.pid"
+			" -lf /var/lib/dhcp/dhclient.%iface%.leases"
+			" %iface%",
 		"kill -9 `cat /var/run/dhclient.%iface%.pid` 2>/dev/null",
 	},
 	{ "pump",
